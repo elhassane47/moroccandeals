@@ -52,7 +52,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'lhemza.urls'
+ROOT_URLCONF = 'moroccandeals.urls'
 
 # Templates Directory
 TEMPLATE_DIR = os.path.join(PROJECT_ROOT, "templates")
@@ -82,7 +82,7 @@ WSGI_APPLICATION = 'moroccandeals.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': os.getenv('SQL_ENGINE', 'django.db.backends.postgresql'),
-        'NAME': os.getenv('POSTGRES_DB', 'moroccandeals'),
+        'NAME': os.getenv('POSTGRES_DB', 'lhemza'),
         'USER': os.getenv('POSTGRES_USER', 'dealer'),
         'PASSWORD': os.getenv('POSTGRES_PASSWORD', 'matuidi'),
         'HOST': os.getenv('SQL_HOST', 'localhost'),
@@ -129,6 +129,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = ' '
+
+STATICFILES_DIRS = ( os.path.join('static'), )
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
