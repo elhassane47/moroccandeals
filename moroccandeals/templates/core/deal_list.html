@@ -1,11 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<h1>Deals</h1>
+{% extends 'base.html' %}
+
+{% block body_content %}
 <ul>
 {% for deal in object_list %}
     <li><a href="{{ deal.get_absolute_url }}">{{ deal.title }}</a>{{ deal.start_date|date }}</li>
@@ -13,5 +8,4 @@
     <li>No Deals yet.</li>
 {% endfor %}
 </ul>
-</body>
-</html>
+{% endblock %}

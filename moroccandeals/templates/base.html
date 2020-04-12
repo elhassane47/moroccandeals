@@ -1,0 +1,32 @@
+{% load i18n staticfiles %}<!DOCTYPE html>
+% get_current_language as LANGUAGE_CODE %}<html lang="{{ LANGUAGE_CODE }}">
+    <head>
+        <title> Moroccan deals - {% block head-title  %} Acceuil {% endblock %}</title>
+        {% block meta %}
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <meta name="msapplication-TileColor" content="#2b5797">
+            <meta name="apple-mobile-web-app-capable" content="yes">
+            <meta name="apple-mobile-web-app-status-bar-style" content="black">
+            <meta name="apple-mobile-web-app-title" content="Moroccan deals">
+            <meta name="og:type" content="website">
+        {% endblock %}
+
+        {% block styles %}
+            <link href="{% static '/vendor/' %}" rel="stylesheet">
+            <link href="{% static '/vendor/bootstrap/bootstrap.min.css' %}" rel="stylesheet">
+            <link href="{% static '/vendor/bootstrap/bootstrap-reboot.min.css' %}" rel="stylesheet">
+            <link href="{% static '/vendor/fontawesome/all.min.css' %}" rel="stylesheet" type="text/css">
+            <link href="{% static '/css/index.css' %}" rel="stylesheet" type="text/css">
+            <link href="{% static '/css/navbar.css' %}" rel="stylesheet" type="text/css">
+{#            <link href="{% static '/css/rtl.css' %}" rel="stylesheet" type="text/css">#}
+        {% endblock %}
+
+
+    </head>
+    <body >
+        {% include 'navbar.html' %}
+        {% block body_content %}
+        {% endblock %}
+    </body>
+</html>

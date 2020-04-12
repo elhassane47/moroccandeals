@@ -1,0 +1,91 @@
+{% load i18n staticfiles %}
+        <nav class="navbar navbar-expand-lg bg-white scrolling-navbar">
+            <div class="container">
+
+                <div class="navbar-header">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
+<span class="navbar-toggler-icon"></span>
+<span class="lni-menu"></span>
+<span class="lni-menu"></span>
+<span class="lni-menu"></span>
+</button>
+                    <a href="index.html" class="navbar-brand"><img src="{% static '/vendor//img/logo.png' %}"  alt="moroccan-deals"></a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-navbar">
+                    <ul class="navbar-nav mr-auto w-100 justify-content-center">
+                        <li class="nav-item">
+                            <a class="nav-link" href="contact.html">
+                            Hot
+                            </a>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Les catégories
+                            </a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="adlistinggrid.html">Ad Grid</a>
+                                <a class="dropdown-item" href="adlistinglist.html">Ad Listing</a>
+                                <a class="dropdown-item" href="ads-details.html">Listing Detail</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contact.html">
+                            j'offre gratuitement
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contact.html">
+                            Contact
+                            </a>
+                        </li>
+
+                    </ul>
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle btn-common" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Connexion
+                            </a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="login.html"><i class="lni-lock"></i> Log in </a>
+                                <a class="dropdown-item" href="signup.html"><i class="lni-pencil"></i> sign up</a>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="post-btn">
+                        <a class="btn btn-common" href="post-ads.html"><i class="lni-pencil-alt"></i> Post an Ad</a>
+                    </div>
+                </div>
+            </div>
+
+            <ul class="mobile-menu">
+                <li>
+                    <a class="active" href="#">
+Acceuil
+</a>
+                </li>
+                <li>
+                    <a href="category.html">Hot</a>
+                </li>
+                <li>
+                    <a href="#">
+Les catégories
+</a>
+                    <ul class="dropdown">
+                        <li><a href="adlistinggrid.html">Ad Grid</a></li>
+                        <li><a href="adlistinglist.html">Ad Listing</a></li>
+                        <li><a href="ads-details.html">Listing Detail</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="#">j'offre gratuitement</a>
+
+                </li>
+                <li>
+                    <a href="contact.html">Contact</a>
+                </li>
+            </ul>
+
+        </nav>
+
