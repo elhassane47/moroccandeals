@@ -1,11 +1,155 @@
 {% extends 'base.html' %}
-
 {% block body_content %}
-<ul>
-{% for deal in object_list %}
-    <li><a href="{{ deal.get_absolute_url }}">{{ deal.title }}</a>{{ deal.start_date|date }}</li>
-{% empty %}
-    <li>No Deals yet.</li>
-{% endfor %}
-</ul>
+<div class="main-container section-padding">
+   <div class="container">
+      <div class="row">
+         <div class="col-lg-3 col-md-12 col-xs-12 page-sidebar">
+            <aside>
+               <div class="widget_search">
+                  <form role="search" id="search-form">
+                     <input type="search" class="form-control" autocomplete="off" name="s" placeholder="Search..." id="search-input" value="">
+                     <button type="submit" id="search-submit" class="search-btn"><i class="lni-search"></i></button>
+                  </form>
+               </div>
+               <div class="widget categories">
+                  <h4 class="widget-title">All Categories</h4>
+                  <ul class="categories-list">
+                     <li>
+                        <a href="https://preview.uideck.com/items/nexusplus/category.html#">
+                        <i class="lni-dinner"></i>
+                        Hotel &amp; Travels <span class="category-counter">(5)</span>
+                        </a>
+                     </li>
+                     <li>
+                        <a href="https://preview.uideck.com/items/nexusplus/category.html#">
+                        <i class="lni-control-panel"></i>
+                        Services <span class="category-counter">(8)</span>
+                        </a>
+                     </li>
+                     <li>
+                        <a href="https://preview.uideck.com/items/nexusplus/category.html#">
+                        <i class="lni-github"></i>
+                        Pets <span class="category-counter">(2)</span>
+                        </a>
+                     </li>
+                     <li>
+                        <a href="https://preview.uideck.com/items/nexusplus/category.html#">
+                        <i class="lni-coffee-cup"></i>
+                        Restaurants <span class="category-counter">(3)</span>
+                        </a>
+                     </li>
+                     <li>
+                        <a href="https://preview.uideck.com/items/nexusplus/category.html#">
+                        <i class="lni-home"></i>
+                        Real Estate <span class="category-counter">(4)</span>
+                        </a>
+                     </li>
+                     <li>
+                        <a href="https://preview.uideck.com/items/nexusplus/category.html#">
+                        <i class="lni-pencil"></i>
+                        Jobs <span class="category-counter">(5)</span>
+                        </a>
+                     </li>
+                     <li>
+                        <a href="https://preview.uideck.com/items/nexusplus/category.html#">
+                        <i class="lni-display"></i>
+                        Electronics <span class="category-counter">(9)</span>
+                        </a>
+                     </li>
+                  </ul>
+               </div>
+               <div class="widget">
+                  <h4 class="widget-title">Advertisement</h4>
+                  <div class="add-box">
+                     <img class="img-fluid" src="./NexusPlus - Classified Ads and Listing Template_files/img1.jpg" alt="">
+                  </div>
+               </div>
+            </aside>
+         </div>
+         <div class="col-lg-9 col-md-12 col-xs-12 page-content">
+            <div class="product-filter">
+               <div class="short-name">
+                  <span>Showing (1 - 12 products of 7371 products)</span>
+               </div>
+               <div class="Show-item">
+                  <span>Trier par</span>
+                  <form class="woocommerce-ordering" method="post">
+                     <label>
+                        <select name="order" class="orderby">
+                           <option selected="selected" value="menu-order">49 items</option>
+                           <option value="popularity">nouveautés</option>
+                           <option value="popularity">populaire</option>
+                           <option value="popularity">prix ordre décroissant</option>
+                           <option value="popularity">prix ordre croissant</option>
+                        </select>
+                     </label>
+                  </form>
+               </div>
+            </div>
+            <div class="adds-wrapper">
+               <div class="tab-content">
+                  <div id="list-view" class="tab-pane fade active show">
+                     <div class="row">
+                         {% for deal in object_list %}
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                           <div class="featured-box">
+                              <figure>
+                                  {% if deal.get_reduction %}
+                                 <span class="price-save">
+                                     {{ deal.get_reduction }}%
+                                 </span>
+                                  {% endif %}
+                                 <div class="icon">
+                                    <span class="bg-green"><i class="lni-heart"></i></span>
+                                    <span><i class="lni-bookmark"></i></span>
+                                 </div>
+                                 <a href="{{ deal.get_absolute_url }}"><img class="img-fluid" src="{{ deal.get_image_url }}" alt="{{ deal.title }}"></a>
+                              </figure>
+                              <div class="feature-content">
+                                 <div class="product">
+{#                                     todo : add sub categorie#}
+{#                                    <a href="https://preview.uideck.com/items/nexusplus/category.html#">Electronic &gt; </a>#}
+                                     {% for cat in  deal.category.all %}
+                                    <a href="https://preview.uideck.com/items/nexusplus/category.html#">{{ cat.name }}</a>
+                                         {% endfor %}
+                                 </div>
+                                 <h4><a href="{{ deal.get_absolute_url }}">{{ deal.title }}</a></h4>
+                                 <div class="meta-tag">
+                                    <span>
+                                    <a href="https://preview.uideck.com/items/nexusplus/category.html#"><i class="lni-user"></i>{{ deal.user.username }}</a>
+                                    </span>
+                                    <span>
+{#                                        todo: add location url#}
+                                    <a href="https://preview.uideck.com/items/nexusplus/category.html#"><i class="lni-map-marker"></i>{{ deal.location.name }}</a>
+                                    </span>
+                                 </div>
+                                 <p class="dsc">{{ deal.description }}.</p>
+                                 <div class="listing-bottom">
+                                    <h3 class="price float-left">{{ deal.price }} DH</h3>
+                                    <a href="https://preview.uideck.com/items/nexusplus/ads-details.html" class="btn btn-common float-right">View Details</a>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                         {% empty %}
+                             <p> Pas d'offre pout cette catégorie</p>
+                         {% endfor %}
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="pagination-bar">
+               <nav>
+                  <ul class="pagination justify-content-center">
+                     <li class="page-item"><a class="page-link active" href="https://preview.uideck.com/items/nexusplus/category.html#">1</a></li>
+                     <li class="page-item"><a class="page-link" href="https://preview.uideck.com/items/nexusplus/category.html#">2</a></li>
+                     <li class="page-item"><a class="page-link" href="https://preview.uideck.com/items/nexusplus/category.html#">3</a></li>
+                     <li class="page-item"><a class="page-link" href="https://preview.uideck.com/items/nexusplus/category.html#">Next</a></li>
+                  </ul>
+               </nav>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
 {% endblock %}
