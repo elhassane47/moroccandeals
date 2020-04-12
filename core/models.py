@@ -4,10 +4,12 @@ from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import User
 from django.shortcuts import reverse
 from django.utils import timezone
+from django.conf import settings
 
 
 def path(instance, filename):
     return '%s/%s' % (instance.__class__.__name__, filename)
+
 
 class Location(models.Model):
     name = models.CharField(max_length=100, null=True, blank=True)
@@ -24,6 +26,9 @@ class Category(models.Model):
         null=True
     )
     description = models.CharField(max_length=150)
+
+    def __str__(self):
+        return self.name
 
 
 class Deal(models.Model):
@@ -69,7 +74,7 @@ class Deal(models.Model):
         _('Updated at'),
         auto_now=True
     )
-    category = models.ManyToManyField(Category, null=True, blank=True, related_name='deals')
+    category = models.ManyToManyField(Category, related_name='deals')
 
     # add foreign key
     location = models.ForeignKey(Location, default=1, on_delete=models.CASCADE)
@@ -83,6 +88,18 @@ class Deal(models.Model):
         return reverse(
             'deals:deal-detail',
             kwargs={'slug': self.slug, 'deal_id': self.id})
+
+    @property
+    def get_image_url(self):
+        if self.thumbnail and hasattr(self.thumbnail, 'url'):
+            return self.thumbnail.url
+        else:
+            return "{}deals/{}".format(settings.MEDIA_URL, "img-2.jpg")
+
+    @property
+    def get_reduction(self):
+        if self.price and self.crossed_price:
+            return 100 - int(self.price/self.crossed_price * 100)
 
     def clean(self):
         super(Deal, self).clean()
