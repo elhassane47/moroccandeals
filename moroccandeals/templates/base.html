@@ -1,5 +1,5 @@
 {% load i18n staticfiles %}<!DOCTYPE html>
-<html lang="{{ LANGUAGE_CODE }}">
+<html lang="fr">
     <head>
         <title> Moroccan deals - {% block head-title  %} Acceuil {% endblock %}</title>
         {% block meta %}
@@ -32,12 +32,14 @@
 
     </head>
     <body >
-       {% block header %}
            <header id="header-wrap">
            {% include 'header.html' %}
+             {% block hero %}
+
            {% include 'hero.html' %}
+             {% endblock %}
+
            </header>
-       {% endblock %}
 
         {% block body_content %}
         {% endblock %}

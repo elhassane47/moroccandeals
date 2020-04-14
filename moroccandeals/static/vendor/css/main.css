@@ -1,58 +1,3 @@
-/*
-Theme Name:       NexusPlus - Classified Ads and Listing Template
-Author:           UIdeck
-Author URI:       http://uideck.com
-Text Domain:      UIdeck
-Domain Path:      /languages/
-*/
-
-/*TABLE OF CONTENT */
-
-/* CORE: */
-
-/* ____Bootstrap */
-
-/* ____Color */
-
-/* ____Form */
-
-/* ____Logo */
-
-/* ____Icon */
-
-/* ____Button */
-
-/* ____Background */
-
-/* ____Typography */
-
-/* ____Nav */
-
-/* ____Header */
-
-/* ____Footer */
-
-/* MODULES: */
-
-/* ____Service */
-
-/* ____Counter */
-
-/* ____Google-maps */
-
-/* ____Pagination */
-
-/* ____Pricing-table */
-
-/* ____Blog */
-
-/* ____Single Blog */
-
-/* ____Search */
-
-/* ____Testimonial */
-
-/* Google Fonts */
 
 @import url("https://fonts.googleapis.com/css?family=Open+Sans|Roboto:500,700");
 html {
@@ -260,6 +205,7 @@ ol li {
 }
 
 .btn-common {
+    width : 100%;
     background-color: #E91E63;
     position: relative;
     color: #fff;
