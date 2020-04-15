@@ -8,6 +8,9 @@
                <h3>
                   Login Now
                </h3>
+                {% if form.errors %}
+                <p>Your username and password didn't match. Please try again.</p>
+                {% endif %}
                <form method="POST" role="form" class="login-form">
                    {% csrf_token %}
                   <div class="form-group">
