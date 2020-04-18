@@ -17,11 +17,12 @@ from django.contrib import admin
 from django.conf.urls import url, include
 from django.conf.urls.static import static
 from django.conf import settings
-
+from core.views import Home
 
 urlpatterns = [
     url('admin/', admin.site.urls),
     url('^deals/', include(('core.urls', 'core'), namespace='deals')),
+    url('', Home.as_view(), name='home'),
     url('', include('django.contrib.auth.urls')),
 
 ]

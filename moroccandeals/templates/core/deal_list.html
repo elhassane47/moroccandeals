@@ -121,9 +121,7 @@
                                  <div class="product">
 {#                                     todo : add sub categorie#}
 {#                                    <a href="https://preview.uideck.com/items/nexusplus/category.html#">Electronic &gt; </a>#}
-                                     {% for cat in  deal.category.all %}
-                                    <a href="https://preview.uideck.com/items/nexusplus/category.html#">{{ cat.name }}</a>
-                                         {% endfor %}
+                                    <a href="https://preview.uideck.com/items/nexusplus/category.html#">{{ deal.category.name }}</a>
                                  </div>
                                  <h4><a href="{{ deal.get_absolute_url }}">{{ deal.title }}</a></h4>
                                  <div class="meta-tag">

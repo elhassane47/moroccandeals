@@ -4,6 +4,15 @@ from django.views.generic import View, TemplateView, ListView, DetailView
 from core.models import Deal, Category
 
 
+class Home(TemplateView):
+    template_name = 'core/home.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['latest_deals'] = Deal.objects.all()[:6]
+
+        return context
+
 def deal_details(request, slug, deal_id, form=None):
     deal = get_object_or_404(Deal, pk=deal_id)
 

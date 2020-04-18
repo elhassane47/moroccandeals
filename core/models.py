@@ -74,7 +74,8 @@ class Deal(models.Model):
         _('Updated at'),
         auto_now=True
     )
-    category = models.ManyToManyField(Category, related_name='deals')
+
+    category = models.ForeignKey(Category, null=True, related_name='deals',on_delete=models.SET_NULL)
 
     # add foreign key
     location = models.ForeignKey(Location, default=1, on_delete=models.CASCADE)
