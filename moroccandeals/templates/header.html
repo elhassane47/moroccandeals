@@ -9,7 +9,7 @@
 <span class="lni-menu"></span>
 <span class="lni-menu"></span>
 </button>
-                    <a href="index.html" class="navbar-brand"><img src="{% static '/vendor//img/logo.png' %}"  alt="moroccan-deals"></a>
+                    <a href="{% url 'deals:home' %}" class="navbar-brand"><img src="{% static '/vendor//img/logo.png' %}"  alt="moroccan-deals"></a>
                 </div>
                 <div class="collapse navbar-collapse" id="main-navbar">
                     <ul class="navbar-nav mr-auto w-100 justify-content-center">
@@ -65,7 +65,7 @@
                         </li>
                     </ul>
                     <div class="post-btn">
-                        <a class="btn btn-common" href="post-ads.html"><i class="lni-pencil-alt"></i> Post an Ad</a>
+                        <a class="btn btn-common" href="{% url 'deals:deal-create' %}"><i class="lni-pencil-alt"></i> Post an Ad</a>
                     </div>
                 </div>
             </div>

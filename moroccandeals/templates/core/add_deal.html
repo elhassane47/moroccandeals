@@ -1,0 +1,123 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+{% block body_content %}
+<div id="content" class="section-padding">
+         <div class="container">
+            <div class="row">
+               <div class="col-sm-12 col-md-4 col-lg-3 page-sidebar">
+                  <aside>
+                     <div class="sidebar-box">
+                        <div class="user">
+                           <figure>
+                              <a href="https://preview.uideck.com/items/nexusplus/post-ads.html#"><img src="./post-ads.html_files/img1.jpg" alt=""></a>
+                           </figure>
+                           <div class="usercontent">
+                              <h3>Hello William!</h3>
+                              <h4>Administrator</h4>
+                           </div>
+                        </div>
+                        <nav class="navdashboard">
+                           <ul>
+                              <li>
+                                 <a href="https://preview.uideck.com/items/nexusplus/dashboard.html">
+                                 <i class="lni-dashboard"></i>
+                                 <span>Dashboard</span>
+                                 </a>
+                              </li>
+                              <li>
+                                 <a href="https://preview.uideck.com/items/nexusplus/account-profile-setting.html">
+                                 <i class="lni-cog"></i>
+                                 <span>Profile Settings</span>
+                                 </a>
+                              </li>
+                              <li>
+                                 <a href="https://preview.uideck.com/items/nexusplus/account-myads.html">
+                                 <i class="lni-layers"></i>
+                                 <span>My Ads</span>
+                                 </a>
+                              </li>
+                              <li>
+                                 <a href="https://preview.uideck.com/items/nexusplus/post-ads.html#">
+                                 <i class="lni-envelope"></i>
+                                 <span>Offers/Messages</span>
+                                 </a>
+                              </li>
+                              <li>
+                                 <a href="https://preview.uideck.com/items/nexusplus/payments.html">
+                                 <i class="lni-wallet"></i>
+                                 <span>Payments</span>
+                                 </a>
+                              </li>
+                              <li>
+                                 <a href="https://preview.uideck.com/items/nexusplus/account-favourite-ads.html">
+                                 <i class="lni-heart"></i>
+                                 <span>My Favourites</span>
+                                 </a>
+                              </li>
+                              <li>
+                                 <a href="https://preview.uideck.com/items/nexusplus/account-profile-setting.html">
+                                 <i class="lni-star"></i>
+                                 <span>Privacy Settings</span>
+                                 </a>
+                              </li>
+                              <li>
+                                 <a href="https://preview.uideck.com/items/nexusplus/post-ads.html#">
+                                 <i class="lni-enter"></i>
+                                 <span>Logout</span>
+                                 </a>
+                              </li>
+                           </ul>
+                        </nav>
+                     </div>
+                     <div class="widget">
+                        <h4 class="widget-title">Advertisement</h4>
+                        <div class="add-box">
+                           <img class="img-fluid" src="./post-ads.html_files/img1(1).jpg" alt="">
+                        </div>
+                     </div>
+                  </aside>
+               </div>
+               <div class="col-sm-12 col-md-8 col-lg-9">
+                  <div class="row page-content">
+                      <form method="post" action=" "  enctype="multipart/form-data" style="width: 100%">
+                        {% csrf_token %}
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-7">
+                        <div class="inner-box">
+                           <div class="dashboard-box">
+                              <h2 class="dashbord-title">Ad Detail</h2>
+                           </div>
+                           <div class="dashboard-wrapper">
+                               {% for field in form.visible_fields %}
+
+                              <div class="form-group mb-3">
+                                    {% for error in field.errors %}
+                                        <span class="help-block">{{ error }}</span>
+                                    {% endfor %}
+                                 <label class="control-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
+                                  {{ field|add_class:'form-control' }}
+                              </div>
+                                {% endfor %}
+                           <div class="form-group mb-3">
+                                <button type="submit" class="btn btn-common">Save</button>
+                              <a href="{% url 'deals:home' %}" class="btn btn-default">Cancel</a>
+                           </div>
+
+{#                              <label class="tg-fileuploadlabel" for="tg-photogallery">#}
+{#                              <span>Drop files anywhere to upload</span>#}
+{#                              <span>Or</span>#}
+{#                              <span class="btn btn-common">Select Files</span>#}
+{#                              <span>Maximum upload file size: 500 KB</span>#}
+{#                              <input id="tg-photogallery" class="tg-fileinput" type="file" name="file">#}
+{#                              </label>#}
+                           </div>
+                        </div>
+                     </div>
+                      </form>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+
+{% endblock %}

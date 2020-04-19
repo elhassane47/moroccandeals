@@ -1,8 +1,10 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Count
-from django.views.generic import View, TemplateView, ListView, DetailView
+from django.views.generic import View, TemplateView, ListView, CreateView
 from core.models import Deal, Category
-
+from core.forms import DealCreate
+from django.contrib.auth.decorators import login_required
 
 class Home(TemplateView):
     template_name = 'core/home.html'
@@ -23,6 +25,20 @@ def deal_details(request, slug, deal_id, form=None):
     return render(request, 'core/deal_detail.html', context)
 
 
+
+@login_required
+def create_deal(request):
+    if request.method == 'POST':
+        form = DealCreate(request.POST,request.FILES or None)
+        if form.is_valid():
+            form.instance.user = request.user
+            form.save()
+            return redirect('deals:deals-list')
+    else:
+        form = DealCreate()
+    return render(request, 'core/add_deal.html', {
+        'form': form
+    })
 
 class DealsList(ListView):
     model = Deal
