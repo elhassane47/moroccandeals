@@ -21,8 +21,7 @@ from core.views import Home
 
 urlpatterns = [
     url('admin/', admin.site.urls),
-    url('^deals/', include(('core.urls', 'core'), namespace='deals')),
-    url('', Home.as_view(), name='home'),
+    url('', include(('core.urls', 'core'), namespace='deals')),
     url('', include('django.contrib.auth.urls')),
 
 ]
