@@ -18,6 +18,9 @@ class Location(models.Model):
         app_label = 'core'
         db_table = 'locations'
 
+    def __str__(self):
+        return self.name
+
 
 class Category(models.Model):
     name = models.CharField(max_length=50, null=False)
